@@ -49,6 +49,7 @@ textarea:focus {
   background-color: #f3f3f3;
   width: 80vw;
   max-height: 90vh;
+  overflow-y: auto;
   padding: 40px 10px;
   border-radius: 10px;
   -webkit-box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.3);
@@ -61,7 +62,12 @@ textarea:focus {
   cursor: pointer;
 }
 
-.add-btn:hover {
+.delete-btn {
+  cursor: pointer;
+}
+
+.add-btn:hover,
+.delete-btn:hover {
   transform: scale(0.96);
 }
 

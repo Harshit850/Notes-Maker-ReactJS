@@ -34,7 +34,7 @@ const Main = () => {
             <AddTask notes={notes} setNotes={setNotes} />
           </Col>
           <Col lg='6'>
-            <ShowTasks notes={notes} />
+            <ShowTasks notes={notes} setNotes={setNotes} />
           </Col>
         </Row>
       </Container>

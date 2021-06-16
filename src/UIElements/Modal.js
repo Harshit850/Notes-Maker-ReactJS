@@ -9,6 +9,11 @@ const Model = ({ show, handleClose, notes, setNotes }) => {
   const [description, setDescription] = useState('');
 
   const handleAdd = () => {
+    if (date === '' || category === '' || description === '') {
+      alert('Fields cannot be empty!');
+      return;
+    }
+
     const note = {
       id: Math.floor(Math.random() * 100),
       date: date,
