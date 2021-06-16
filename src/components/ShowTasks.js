@@ -1,10 +1,18 @@
 import React from 'react';
+import { Container, ListGroup } from 'react-bootstrap';
 
-const ShowTasks = () => {
+const ShowTasks = ({ notes }) => {
   return (
-    <div className='show-tasks'>
-      <h1>Show Tasks </h1>
-    </div>
+    <Container className='show-tasks'>
+      <h2 className='m-4 bot-border text-center'>ALL NOTES </h2>
+      <ListGroup className='show'>
+        {notes.map((note) => (
+          <ListGroup.Item className='mb-3 rounded-1' key={note.id}>
+            {note.description}
+          </ListGroup.Item>
+        ))}
+      </ListGroup>
+    </Container>
   );
 };
 

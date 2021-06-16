@@ -2,23 +2,35 @@ body {
   background-color: #dddddd !important;
 }
 
-input[type='text'],
+input,
 button {
-  outline: none;
-  border: none !important;
-  -webkit-box-shadow: 4px 4px 8px 4px #f5c0c0;
-  -moz-box-shadow: 4px 4px 5px 4px #f5c0c0;
-  box-shadow: 2px 4px 5px 2px #f5c0c0;
+  box-shadow: none;
 }
 
-button:focus {
+button {
+  border: none !important;
+}
+
+button:focus,
+input:focus,
+textarea:focus {
   outline: none;
   box-shadow: inherit !important;
 }
 
-h1.bot-border {
+.primary-bg {
+  background-color: #ff7171 !important;
+}
+
+.bot-border {
   padding-bottom: 10px;
   border-bottom: 4px solid #ff7171;
+}
+
+.btn-class {
+  -webkit-box-shadow: 4px 4px 8px 4px #f5c0c0;
+  -moz-box-shadow: 4px 4px 5px 4px #f5c0c0;
+  box-shadow: 2px 4px 5px 2px #f5c0c0;
 }
 
 .btn-class:hover {
@@ -36,7 +48,8 @@ h1.bot-border {
 .main {
   background-color: #f3f3f3;
   width: 80vw;
-  padding: 40px 60px;
+  max-height: 90vh;
+  padding: 40px 10px;
   border-radius: 10px;
   -webkit-box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.3);
@@ -49,11 +62,19 @@ h1.bot-border {
 }
 
 .add-btn:hover {
-  transform: scale(0.98);
+  transform: scale(0.96);
 }
 
 /* SHOW TASKS */
 .show-tasks {
-  border-left: 3px solid #ff7171;
+  border-left: 4px solid #ff7171;
   height: 400px;
+}
+
+/* media queries */
+@media (max-width: 990px) {
+  .show-tasks {
+    border-left: none !important;
+    margin-top: 40px;
+  }
 }
