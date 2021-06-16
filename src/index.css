@@ -57,18 +57,39 @@ textarea:focus {
   box-shadow: 2px 4px 5px 2px rgba(0, 0, 0, 0.3);
 }
 
+.delete-btn,
+.add-btn,
+.edit-btn,
+.view-btn {
+  cursor: pointer;
+}
+
 .add-btn {
   color: #ff7171;
-  cursor: pointer;
+}
+
+.add-btn:hover {
+  transform: scale(0.98);
+}
+
+.icons span {
+  font-size: 1.5rem;
+}
+
+.icons span:hover {
+  transform: scale(1.1);
+}
+
+.view-btn {
+  color: #ff5e78;
+}
+
+.edit-btn {
+  color: #ffc75f;
 }
 
 .delete-btn {
-  cursor: pointer;
-}
-
-.add-btn:hover,
-.delete-btn:hover {
-  transform: scale(0.96);
+  color: #f54748;
 }
 
 /* SHOW TASKS */

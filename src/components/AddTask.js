@@ -34,21 +34,21 @@ const AddTask = ({ notes, setNotes }) => {
       </Container>
 
       <Container className='categories'>
-        <h6> CATEGORIES </h6>
+        <h6 className='mb-3'> FEATURES </h6>
         <Row>
           <Col>
-            <Buttons text='All' />
+            <Buttons text='create notes' />
           </Col>
           <Col>
-            <Buttons text='Random' />
+            <Buttons text='read notes' />
           </Col>
         </Row>
         <Row>
           <Col>
-            <Buttons text='Specific' />
+            <Buttons text='update notes' />
           </Col>
           <Col>
-            <Buttons text='Other' />
+            <Buttons text='delete notes' />
           </Col>
         </Row>
       </Container>

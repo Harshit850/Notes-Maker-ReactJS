@@ -8,21 +8,31 @@ const Main = () => {
   const [notes, setNotes] = useState([
     {
       id: 1,
-      date: '20/06/2021',
-      category: 'general',
-      description: 'Fix the dog house',
+      date: '2021-06-20',
+      category: 'General',
+      description:
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga cumque laboriosam recusandae quo nihil incidunt assumenda maxime vero qui enim numquam, possimus nobis totam maiores quas eum omnis suscipit tempora.',
     },
     {
       id: 2,
-      date: '22/06/2021',
+      date: '2021-06-20',
       category: 'DSA',
-      description: 'Learn five algorithms',
+      description:
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga cumque laboriosam recusandae quo nihil incidunt assumenda maxime vero qui enim numquam, possimus nobis totam maiores quas eum omnis suscipit tempora.',
     },
     {
       id: 3,
-      date: '20/06/2021',
-      category: 'development',
-      description: 'Make React App and learn state management',
+      date: '2021-06-20',
+      category: 'Development',
+      description:
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga cumque laboriosam recusandae quo nihil incidunt assumenda maxime vero qui enim numquam, possimus nobis totam maiores quas eum omnis suscipit tempora.',
+    },
+    {
+      id: 4,
+      date: '2021-06-20',
+      category: 'Learning',
+      description:
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga cumque laboriosam recusandae quo nihil incidunt assumenda maxime vero qui enim numquam, possimus nobis totam maiores quas eum omnis suscipit tempora.',
     },
   ]);
 
