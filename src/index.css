@@ -97,6 +97,7 @@ textarea:focus {
 
 /* SHOW TASKS */
 .show-tasks {
+  overflow-y: auto;
   border-left: 4px solid #ff7171;
   height: 400px;
 }
@@ -106,5 +107,11 @@ textarea:focus {
   .show-tasks {
     border-left: none !important;
     margin-top: 40px;
+  }
+}
+
+@media (max-width: 820px) {
+  .main {
+    width: 90vw;
   }
 }

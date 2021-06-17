@@ -32,7 +32,7 @@ const ModalForm = ({ setDate, setCategory, setDescription }) => {
           <Form.Label>Description</Form.Label>
           <Form.Control
             as='textarea'
-            rows={3}
+            rows={6}
             onChange={(e) => setDescription(e.target.value)}
           />
         </Form.Group>

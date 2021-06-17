@@ -49,7 +49,7 @@ const ModalForm = ({ show, note, handleClose, setNotes, notes }) => {
               <Col sm='10'>
                 <Form.Control
                   type='date'
-                  value={date.split('').reverse().join('')}
+                  value={date}
                   onChange={(e) => setDate(e.target.value)}
                 />
               </Col>
@@ -58,7 +58,7 @@ const ModalForm = ({ show, note, handleClose, setNotes, notes }) => {
               <Form.Label>Description</Form.Label>
               <Form.Control
                 as='textarea'
-                rows={3}
+                rows={6}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
