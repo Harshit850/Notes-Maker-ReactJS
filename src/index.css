@@ -14,6 +14,15 @@ button {
   border: none !important;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #000 !important;
+}
+
 button:focus,
 input:focus,
 textarea:focus {
@@ -49,7 +58,7 @@ textarea:focus {
 }
 
 .main {
-  background-color: #f3f3f3;
+  background-color: #f2f2f2;
   width: 70vw;
   max-height: 90vh;
   overflow-y: auto;
@@ -84,7 +93,7 @@ textarea:focus {
 }
 
 .view-btn {
-  color: #ff5e78;
+  color: #000;
 }
 
 .edit-btn {
