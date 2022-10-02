@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Container, ListGroup, Dropdown } from 'react-bootstrap';
 
 import EditModal from '../UIElements/EditModal';
@@ -8,6 +8,25 @@ const ShowTasks = ({ notes, setNotes }) => {
   const [viewModal, setViewModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const [singleNote, setSingleNote] = useState('');
+  const [currentOrder, setCurrentOrder] = useState('year');
+  const [sortedNotes, setSortedNotes] = useState(notes);
+
+  const notesByOrders = useMemo(() => {
+    const notesByYear = [...notes].sort(
+      (a, b) => new Date(a.date).getFullYear() - new Date(b.date).getFullYear(),
+    );
+    const notesByMonth = [...notes].sort(
+      (a, b) => new Date(a.date).getMonth() - new Date(b.date).getMonth(),
+    );
+    const notesByDate = [...notes].sort(
+      (a, b) => new Date(a.date).getDate() - new Date(b.date).getDate(),
+    );
+    return {year: notesByYear, month: notesByMonth, date: notesByDate};
+  }, [notes]);
+
+  useEffect(() => {
+    setSortedNotes(notesByOrders[currentOrder]);
+  }, [currentOrder, notesByOrders]);
 
   const showViewModal = (id) => {
     const foundNote = notes.find((note) => note.id === id);
@@ -31,6 +50,18 @@ const ShowTasks = ({ notes, setNotes }) => {
     setNotes(notes.filter((note) => note.id !== id));
   };
 
+  const sortByYear = useCallback(() => {
+    setCurrentOrder('year');
+  }, []);
+
+  const sortByMonth = useCallback(() => {
+    setCurrentOrder('month');
+  }, []);
+
+  const sortByDate = useCallback(() => {
+    setCurrentOrder('date');
+  }, []);
+
   return (
     <Container className='show-tasks'>
       <h2 className='m-3 text-center'>ALL NOTES </h2>
@@ -42,9 +73,15 @@ const ShowTasks = ({ notes, setNotes }) => {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item value='date'>Date</Dropdown.Item>
-            <Dropdown.Item value='month'>Month</Dropdown.Item>
-            <Dropdown.Item value='year'>Year</Dropdown.Item>
+            <Dropdown.Item onSelect={sortByDate} value="date">
+              Date
+            </Dropdown.Item>
+            <Dropdown.Item onSelect={sortByMonth} value="month">
+              Month
+            </Dropdown.Item>
+            <Dropdown.Item onSelect={sortByYear} value="year">
+              Year
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </div>
@@ -67,14 +104,11 @@ const ShowTasks = ({ notes, setNotes }) => {
         />
       )}
 
-      <ListGroup className='show'>
-        {notes.map((note) => (
-          <ListGroup.Item
-            className='mb-3 rounded-1 d-flex justify-content-between'
-            key={note.id}
-          >
-            <div className='m-1'>{note.category}</div>
-            <div className='icons'>
+      <ListGroup className="show">
+        {sortedNotes.map((note) => (
+          <ListGroup.Item className="mb-3 rounded-1 d-flex justify-content-between" key={note.id}>
+            <div className="m-1">{note.category}</div>
+            <div className="icons">
               <span
                 className='far fa-eye view-btn m-1'
                 onClick={() => showViewModal(note.id)}
