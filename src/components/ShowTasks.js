@@ -3,10 +3,13 @@ import { Container, ListGroup, Dropdown } from 'react-bootstrap';
 
 import EditModal from '../UIElements/EditModal';
 import ViewModal from '../UIElements/ViewModal';
+import DeleteModal from '../UIElements/DeleteModal';
 
 const ShowTasks = ({ notes, setNotes }) => {
   const [viewModal, setViewModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
+  const [deleteModal,setDeleteModal] = useState(false);
+  const [noteId,setNoteId] = useState(0);
   const [singleNote, setSingleNote] = useState('');
 
   const showViewModal = (id) => {
@@ -18,6 +21,7 @@ const ShowTasks = ({ notes, setNotes }) => {
   const hideViewModal = () => {
     setViewModal(false);
     setEditModal(false);
+    setDeleteModal(false);
   };
 
   const handleUpdate = (id) => {
@@ -26,9 +30,15 @@ const ShowTasks = ({ notes, setNotes }) => {
     setEditModal(true);
   };
 
+  const handleViewDeleteModal = (id) => {
+    setDeleteModal(true)
+    setNoteId(id)
+  }
+
   const handleDelete = (id) => {
-    alert('Note will be deleted permanantly!!!');
     setNotes(notes.filter((note) => note.id !== id));
+    setDeleteModal(false)
+    setNoteId(0)
   };
 
   return (
@@ -67,6 +77,15 @@ const ShowTasks = ({ notes, setNotes }) => {
         />
       )}
 
+      {deleteModal && (
+        <DeleteModal
+          show={deleteModal}
+          handleDelete={handleDelete}
+          handleClose={hideViewModal}
+          id={noteId}
+        />
+      )}
+
       <ListGroup className='show'>
         {notes.map((note) => (
           <ListGroup.Item
@@ -85,7 +104,7 @@ const ShowTasks = ({ notes, setNotes }) => {
               ></span>
               <span
                 className='fas fa-trash-alt delete-btn m-1'
-                onClick={() => handleDelete(note.id)}
+                onClick={() => {handleViewDeleteModal(note.id)}}
               ></span>
             </div>
           </ListGroup.Item>
