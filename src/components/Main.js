@@ -8,28 +8,28 @@ const Main = () => {
   const [notes, setNotes] = useState([
     {
       id: 1,
-      date: '2021-06-20',
+      date: '2022-01-13',
       category: 'General',
       description:
         'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga cumque laboriosam recusandae quo nihil incidunt assumenda maxime vero qui enim numquam, possimus nobis totam maiores quas eum omnis suscipit tempora.',
     },
     {
       id: 2,
-      date: '2021-06-20',
+      date: '2021-02-1',
       category: 'DSA',
       description:
         'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga cumque laboriosam recusandae quo nihil incidunt assumenda maxime vero qui enim numquam, possimus nobis totam maiores quas eum omnis suscipit tempora.',
     },
     {
       id: 3,
-      date: '2021-06-20',
+      date: '2023-03-20',
       category: 'Development',
       description:
         'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga cumque laboriosam recusandae quo nihil incidunt assumenda maxime vero qui enim numquam, possimus nobis totam maiores quas eum omnis suscipit tempora.',
     },
     {
       id: 4,
-      date: '2021-06-20',
+      date: '2020-06-30',
       category: 'Learning',
       description:
         'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga cumque laboriosam recusandae quo nihil incidunt assumenda maxime vero qui enim numquam, possimus nobis totam maiores quas eum omnis suscipit tempora.',
