@@ -1,50 +1,56 @@
-import React, { useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import React, { useEffect, useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 
-import AddTask from './AddTask';
-import ShowTasks from './ShowTasks';
+import AddTask from "./AddTask";
+import ShowTasks from "./ShowTasks";
 
 const Main = () => {
-  const [notes, setNotes] = useState([
-    {
-      id: 1,
-      date: '2022-01-13',
-      category: 'General',
-      description:
-        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga cumque laboriosam recusandae quo nihil incidunt assumenda maxime vero qui enim numquam, possimus nobis totam maiores quas eum omnis suscipit tempora.',
-    },
-    {
-      id: 2,
-      date: '2021-02-1',
-      category: 'DSA',
-      description:
-        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga cumque laboriosam recusandae quo nihil incidunt assumenda maxime vero qui enim numquam, possimus nobis totam maiores quas eum omnis suscipit tempora.',
-    },
-    {
-      id: 3,
-      date: '2023-03-20',
-      category: 'Development',
-      description:
-        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga cumque laboriosam recusandae quo nihil incidunt assumenda maxime vero qui enim numquam, possimus nobis totam maiores quas eum omnis suscipit tempora.',
-    },
-    {
-      id: 4,
-      date: '2020-06-30',
-      category: 'Learning',
-      description:
-        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga cumque laboriosam recusandae quo nihil incidunt assumenda maxime vero qui enim numquam, possimus nobis totam maiores quas eum omnis suscipit tempora.',
-    },
-  ]);
+  const [notes, setNotes] = useState([]);
+
+  useEffect(() => {
+    const notesData = JSON.parse(localStorage.getItem("notes"));
+    if (notesData) {
+      setNotes(notesData);
+    }
+  }, []);
+
+  const addNote = (note) => {
+    setNotes([...notes, note]);
+    localStorage.setItem("notes", JSON.stringify([...notes, note]));
+  };
+
+  const editNote = (note) => {
+    const newNotes = notes.map((item) => {
+      if (item.id === note.id) {
+        return note;
+      }
+      return item;
+    });
+    setNotes(newNotes);
+    localStorage.setItem("notes", JSON.stringify(newNotes));
+  };
+
+  const deleteNote = (id) => {
+    setNotes(notes.filter((n) => n.id !== id));
+    localStorage.setItem(
+      "notes",
+      JSON.stringify(notes.filter((n) => n.id !== id))
+    );
+  };
 
   return (
-    <div className='main'>
+    <div className="main">
       <Container>
-        <Row className='justify-content-md-center'>
-          <Col lg='6'>
-            <AddTask notes={notes} setNotes={setNotes} />
+        <Row className="justify-content-md-center">
+          <Col lg="6">
+            <AddTask notes={notes} addNote={addNote} />
           </Col>
-          <Col lg='6'>
-            <ShowTasks notes={notes} setNotes={setNotes} />
+          <Col lg="6">
+            <ShowTasks
+              notes={notes}
+              deleteNote={deleteNote}
+              editNote={editNote}
+            />
           </Col>
         </Row>
       </Container>

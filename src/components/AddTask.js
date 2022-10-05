@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Row, Col, Container } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Row, Col, Container } from "react-bootstrap";
 
-import Modal from '../UIElements/Modal';
-import Buttons from '../UIElements/Buttons';
+import Modal from "../UIElements/Modal";
+import Buttons from "../UIElements/Buttons";
 
-const AddTask = ({ notes, setNotes }) => {
+const AddTask = ({ notes, addNote }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => {
@@ -17,10 +17,10 @@ const AddTask = ({ notes, setNotes }) => {
 
   return (
     <>
-      <Container className='add-container d-flex justify-content-start mb-5'>
-        <h3 className='m-4 bot-border'>NOTE MAKER </h3>
+      <Container className="add-container d-flex justify-content-start mb-5">
+        <h3 className="m-4 bot-border">NOTE MAKER </h3>
         <span
-          className='fas fa-plus-circle fa-3x mt-4 add-btn'
+          className="fas fa-plus-circle fa-3x mt-4 add-btn"
           onClick={handleShowModal}
         ></span>
         {showModal && (
@@ -28,27 +28,27 @@ const AddTask = ({ notes, setNotes }) => {
             show={showModal}
             handleClose={handleHideModal}
             notes={notes}
-            setNotes={setNotes}
+            addNote={addNote}
           />
         )}
       </Container>
 
-      <Container className='categories'>
-        <h6 className='mb-3'> FEATURES </h6>
+      <Container className="categories">
+        <h6 className="mb-3"> FEATURES </h6>
         <Row>
           <Col>
-            <Buttons text='create notes' />
+            <Buttons text="create notes" />
           </Col>
           <Col>
-            <Buttons text='read notes' />
+            <Buttons text="read notes" />
           </Col>
         </Row>
         <Row>
           <Col>
-            <Buttons text='update notes' />
+            <Buttons text="update notes" />
           </Col>
           <Col>
-            <Buttons text='delete notes' />
+            <Buttons text="delete notes" />
           </Col>
         </Row>
       </Container>
