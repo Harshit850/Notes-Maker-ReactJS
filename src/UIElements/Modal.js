@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 
-import ModalForm from './ModalForm';
+import ModalForm from "./ModalForm";
 
-const Model = ({ show, handleClose, notes, setNotes }) => {
-  const [date, setDate] = useState('');
-  const [category, setCategory] = useState('');
-  const [description, setDescription] = useState('');
+const Model = ({ show, handleClose, notes, addNote }) => {
+  const [date, setDate] = useState("");
+  const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
 
   const handleAdd = () => {
-    if (date === '' || category === '' || description === '') {
-      alert('Fields cannot be empty!');
+    if (date === "" || category === "" || description === "") {
+      alert("Fields cannot be empty!");
       return;
     }
 
     const note = {
-      id: Math.floor(Math.random() * 100),
+      id: Math.max(notes.map((n) => n.id)) + 1,
       date: date,
       category: category,
       description: description,
     };
-    setNotes([...notes, note]);
+    addNote(note);
     handleClose();
   };
 
@@ -38,10 +38,10 @@ const Model = ({ show, handleClose, notes, setNotes }) => {
           />
         </Modal.Body>
         <Modal.Footer>
-          <Button className='primary-bg' onClick={handleAdd}>
+          <Button className="primary-bg" onClick={handleAdd}>
             Save Changes
           </Button>
-          <Button variant='secondary' onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
         </Modal.Footer>

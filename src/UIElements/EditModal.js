@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Button, Modal, Form, Row, Col } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Button, Modal, Form, Row, Col } from "react-bootstrap";
 
-const ModalForm = ({ show, note, handleClose, setNotes, notes }) => {
+const ModalForm = ({ show, note, handleClose, editNote }) => {
   const [date, setDate] = useState(note.date);
   const [category, setCategory] = useState(note.category);
   const [description, setDescription] = useState(note.description);
@@ -13,11 +13,7 @@ const ModalForm = ({ show, note, handleClose, setNotes, notes }) => {
       category: category,
       description: description,
     };
-    const currNoteId = note.id;
-    const objIndex = notes.findIndex((note) => note.id === currNoteId);
-    const newNotes = notes;
-    newNotes[objIndex] = newNote;
-    setNotes(newNotes);
+    editNote(newNote);
     handleClose();
   };
 
@@ -29,35 +25,35 @@ const ModalForm = ({ show, note, handleClose, setNotes, notes }) => {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group as={Row} className='mb-4' controlId='formPlaintext'>
-              <Form.Label column sm='2'>
+            <Form.Group as={Row} className="mb-4" controlId="formPlaintext">
+              <Form.Label column sm="2">
                 Category
               </Form.Label>
-              <Col sm='10'>
+              <Col sm="10">
                 <Form.Control
-                  type='text'
+                  type="text"
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                 />
               </Col>
             </Form.Group>
 
-            <Form.Group as={Row} className='mb-4' controlId='formPlaintext'>
-              <Form.Label column sm='2'>
+            <Form.Group as={Row} className="mb-4" controlId="formPlaintext">
+              <Form.Label column sm="2">
                 Date
               </Form.Label>
-              <Col sm='10'>
+              <Col sm="10">
                 <Form.Control
-                  type='date'
+                  type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
                 />
               </Col>
             </Form.Group>
-            <Form.Group controlId='exampleForm.ControlTextarea1'>
+            <Form.Group controlId="exampleForm.ControlTextarea1">
               <Form.Label>Description</Form.Label>
               <Form.Control
-                as='textarea'
+                as="textarea"
                 rows={6}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
@@ -66,10 +62,10 @@ const ModalForm = ({ show, note, handleClose, setNotes, notes }) => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button className='primary-bg' onClick={handleUpdateNote}>
+          <Button className="primary-bg" onClick={handleUpdateNote}>
             Save Changes
           </Button>
-          <Button variant='secondary' onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
         </Modal.Footer>
